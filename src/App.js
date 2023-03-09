@@ -1,16 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import {createUserWithEmailAndPassword , onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth"
-import {auth} from './auth/firebase-config'
+import Router from './router/Router';
 
 
 function App() { 
 
-//  user logged in : {user.email/password}
+
   return (
-    <div className="App">
-     
-    </div>
+    <>
+     <Router />
+    </>
   );
 }
 
