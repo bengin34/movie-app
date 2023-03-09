@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import {UserContext} from "../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../auth/firebase-config";
+
 
 const Navbar = () => {
-  const user = false;
+  const {user} = useContext(UserContext)
+
+const logout = async () => {
+  await signOut(auth)
+}
 
   return (
     <nav
@@ -16,11 +25,11 @@ const Navbar = () => {
         </a>
       </div>
 
-      {user ? (
+      {user ?  (
         <div className="flex justify-center items-center">
           {" "}
-          <span> username</span>{" "}
-          <a href="">
+          <span> {user}</span>{" "}
+          <button onClick={logout}>
             {" "}
             <span>
               {" "}
@@ -35,7 +44,7 @@ const Navbar = () => {
                 <path d="m381.481 184.088-83.009-84.2a11.942 11.942 0 0 0-17.011 0c-4.704 4.74-4.704 12.439 0 17.179l62.558 63.46H96.279c-6.641 0-12.03 5.438-12.03 12.151s5.39 12.151 12.03 12.151h247.74l-62.558 63.46c-4.704 4.752-4.704 12.439 0 17.179a11.931 11.931 0 0 0 17.011 0l82.997-84.2c4.644-4.68 4.692-12.512.012-17.18z" />
               </svg>
             </span>
-          </a>{" "}
+          </button>{" "}
         </div>
       ) : (
         <div className="flex items-center space-x-5">
