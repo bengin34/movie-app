@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { auth } from "../auth/firebase-config";
 import { UserContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const { user, setUser } = useContext(UserContext);
@@ -18,8 +21,40 @@ const Login = () => {
       );
       setUser(user.user.email);
       navigate("/");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Logged in successfully'
+      })
     } catch (error) {
       console.log(error);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'error',
+        title: 'Login is not successfull'
+      })
     }
   };
 

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import {UserContext} from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
@@ -12,7 +13,10 @@ const Navbar = () => {
 const logout = async () => {
   await signOut(auth)
 }
-
+const userNameSlice = () => {
+  const a = user?.indexOf('@')
+  return user.slice(0,a)
+}
   return (
     <nav
       className="flex justify-around py-4 bg-white/80
@@ -20,15 +24,15 @@ const logout = async () => {
       fixed top-0 left-0 right-0 z-10"
     >
       <div className="flex items-center">
-        <a className="cursor-pointer">
+        <Link to="/"  className="cursor-pointer">
           <h3 className="text-2xl font-medium text-blue-500">MOVİE - APP</h3>
-        </a>
+        </Link>
       </div>
 
       {user ?  (
         <div className="flex justify-center items-center">
           {" "}
-          <span> {user}</span>{" "}
+          <span> {userNameSlice()} </span>{" "}
           <button onClick={logout}>
             {" "}
             <span>

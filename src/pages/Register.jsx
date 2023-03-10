@@ -4,8 +4,10 @@ import {
 } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { auth } from "../auth/firebase-config";
 import { UserContext } from "../context/AuthContext";
+
 
 const Register = () => {
   const [registerData, setRegisterData] = useState({ email: "", password: "" });
@@ -19,8 +21,42 @@ const Register = () => {
         registerData.password
       );
       setUser(user.user.email);
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+      })
     } catch (error) {
       console.log(error);
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'error',
+        title: 'Signed in unsuccessful'
+      })
     }
   };
 
