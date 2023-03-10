@@ -23,12 +23,12 @@ const Header = ({ setSearchQuery ,getMovies}) => {
               id="search-input"
               onChange={handleInput}
               type="text"
-              className="w-full border border-indigo-700 rounded-md rounded-r-none px-4"
+              className="w-full border border-indigo-600 rounded-md rounded-r-none px-4"
               placeholder="Search for a movie"
             />
             <button
               type="submit"
-              className="bg-indigo-600 text-white px-6 text-lg font-semibold py-4 rounded-r-md"
+              className="bg-indigo-600 text-white px-6 text-lg font-semibold p-2 rounded-r-md"
             >
               Search
             </button>

@@ -1,18 +1,19 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 const MovieCard = ({ movie }) => {
-  console.log(movie);
+  console.log(movie)
+const navigate = useNavigate()
+
+
   return (
     <>
-      <div className=" max-h-[360px] max-w-[240px] m-5 movie-card xs:mx-[100px]">
+      <div className=" m-5 movie-card " onClick={() => navigate(`/${movie.id}`, 
+      {state:{movie:movie}} )} >
         <div
-          className="h-[360px] w-full   bg-cover rounded-t  text-center overflow-hidden"
-          style={{
-            backgroundImage: `url("https://image.tmdb.org/t/p/w1280${movie?.poster_path}")`,
-            backgroundSize: "contain",
-          }}
-          title="Woman holding a mug"
-        >
+          
+        > <img src={`https://image.tmdb.org/t/p/w1280${movie?.poster_path}`} alt="" />
           <div className="overlay">
             <div className="overlay-content">
               <h1>{movie.title}</h1>

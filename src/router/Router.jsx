@@ -18,9 +18,11 @@ const Router = () => {
       <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}/>
+          <Route path="/:id" element={<MovieDetail />} />
+       
+
         <Route path="/register" element={<Register />} />
-        <Route path="/moviedetail" element={<MovieDetail />} />
       </Routes>
     </BrowserRouter>
   );
