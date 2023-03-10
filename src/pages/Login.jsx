@@ -3,22 +3,11 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../auth/firebase-config";
 import { UserContext } from "../context/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const { user, setUser } = useContext(UserContext);
-  
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user.email);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return unsubscribe;
-  }, [setUser]);
+  const navigate = useNavigate();
 
   const loginUser = async () => {
     try {
@@ -28,14 +17,14 @@ const Login = () => {
         loginData.password
       );
       setUser(user.user.email);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
 
-
-
   console.log(user);
+
   return (
     <div>
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
@@ -43,7 +32,7 @@ const Login = () => {
           <h2 className="mb-12 text-center text-5xl font-extrabold">
             Welcome To Movie App.
           </h2>
-          <form>
+          <div>
             <div className="mb-4">
               <label className="block mb-1" htmlFor="email">
                 Email-Address
@@ -85,7 +74,7 @@ const Login = () => {
                 Sign up for an account
               </Link>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
