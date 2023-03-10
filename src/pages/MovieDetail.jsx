@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 
+
 const MovieDetail = () => {
   const [youtube, setYoutube] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ const MovieDetail = () => {
     
   };
   const VIDEO_BASE_URL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
+ 
   const getVideo = async () => {
     const { data } = await axios(VIDEO_BASE_URL);
     setYoutube(data);

@@ -1,15 +1,15 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const MovieCard = ({ movie }) => {
-  console.log(movie)
+
 const navigate = useNavigate()
 
 
   return (
     <>
-      <div className=" m-5 movie-card " onClick={() => navigate(`/${movie.id}`, 
+      <div className="m-5 movie-card" onClick={() => navigate(`/${movie.id}`, 
       {state:{movie:movie}} )} >
         <div
           

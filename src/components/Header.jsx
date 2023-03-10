@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-const Header = ({ setSearchQuery ,getMovies}) => {
-  const [inputData, setInputData] = useState("");
-  const handleInput = (e) => {
-    setInputData(e.target.value);
-  };
+const Header = ({  getMovies, movieName, setMovieName }) => {
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchQuery(inputData.trim());
-    getMovies()
+    getMovies();
   };
+
+  console.log(movieName)
   return (
     <div className="flex justify-center align-center">
       <form onSubmit={handleSubmit}>
@@ -20,8 +18,8 @@ const Header = ({ setSearchQuery ,getMovies}) => {
               Search for a movie
             </label>
             <input
-              id="search-input"
-              onChange={handleInput}
+              
+              onChange={(e) => setMovieName(e.target.value)}
               type="text"
               className="w-full border border-indigo-600 rounded-md rounded-r-none px-4"
               placeholder="Search for a movie"

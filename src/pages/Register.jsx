@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { auth } from "../auth/firebase-config";
 import { UserContext } from "../context/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate()
   const [registerData, setRegisterData] = useState({ email: "", password: "" });
   const { setUser } = useContext(UserContext);
 
@@ -21,6 +22,7 @@ const Register = () => {
         registerData.password
       );
       setUser(user.user.email);
+      navigate("/")
 
       const Toast = Swal.mixin({
         toast: true,

@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import React,{ useContext } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import {UserContext} from "../context/AuthContext";
+import { UserContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
-import Swal from "sweetalert2";
-
 
 const Navbar = () => {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
-const logout = async () => {
-  await signOut(auth)
-}
-const userNameSlice = () => {
-  const a = user?.indexOf('@')
-  return user.slice(0,a)
-}
+  const logout = async () => {
+    await signOut(auth);
+  };
+  const userNameSlice = () => {
+    const a = user?.indexOf("@");
+    return user.slice(0, a);
+  };
   return (
     <nav
       className="flex justify-around py-4 bg-white/80
@@ -24,12 +21,12 @@ const userNameSlice = () => {
       fixed top-0 left-0 right-0 z-10"
     >
       <div className="flex items-center">
-        <Link to="/"  className="cursor-pointer">
+        <Link to="/" className="cursor-pointer">
           <h3 className="text-2xl font-medium text-blue-500">MOVİE - APP</h3>
         </Link>
       </div>
 
-      {user ?  (
+      {user ? (
         <div className="flex justify-center items-center">
           {" "}
           <span> {userNameSlice()} </span>{" "}
@@ -53,7 +50,7 @@ const userNameSlice = () => {
       ) : (
         <div className="flex items-center space-x-5">
           <Link
-          to="/register"
+            to="/register"
             className="flex text-gray-600 hover:text-blue-500
               cursor-pointer transition-colors duration-300"
           >
@@ -71,7 +68,7 @@ const userNameSlice = () => {
             Register
           </Link>
           <Link
-          to="/login"
+            to="/login"
             className="flex text-gray-600 
               cursor-pointer transition-colors duration-300
               font-semibold"

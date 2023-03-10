@@ -21,6 +21,7 @@ const Login = () => {
       );
       setUser(user.user.email);
       navigate("/");
+
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -57,8 +58,6 @@ const Login = () => {
       })
     }
   };
-
-  console.log(user);
 
   return (
     <div>

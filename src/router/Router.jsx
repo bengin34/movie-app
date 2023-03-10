@@ -9,6 +9,7 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useContext, useState, useEffect } from "react";
 import { auth } from "../auth/firebase-config";
 import { UserContext } from "../context/AuthContext";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
   const { user, setUser } = useContext(UserContext);
@@ -18,9 +19,10 @@ const Router = () => {
       <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />}/>
-          <Route path="/:id" element={<MovieDetail />} />
-       
+        <Route path="/" element={<Home />} />
+        <Route path="/:id" element={<PrivateRouter /> }>
+          <Route path="" element={<MovieDetail />} />
+        </Route>
 
         <Route path="/register" element={<Register />} />
       </Routes>
