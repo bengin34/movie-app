@@ -1,37 +1,23 @@
 import React from "react";
 
-const MovieCard = ({movie}) => {
-  console.log(movie)
+const MovieCard = ({ movie }) => {
+  console.log(movie);
   return (
     <>
-      <div className="max-w-sm w-full border border-gray-500 rounded-sm">
+      <div className=" max-h-[360px] max-w-[240px] m-5 movie-card xs:mx-[100px]">
         <div
-          className="h-48 lg:h-auto lg:w-36 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-          style={{ backgroundImage: 'url("/img/card-left.jpg")' }}
+          className="h-[360px] w-full   bg-cover rounded-t  text-center overflow-hidden"
+          style={{
+            backgroundImage: `url("https://image.tmdb.org/t/p/w1280${movie?.poster_path}")`,
+            backgroundSize: "contain",
+          }}
           title="Woman holding a mug"
-        ></div>
-        <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between ">
-          <div className="mb-8">
-            <p className="text-sm text-gray-600 flex items-center">
-              <svg
-                className="fill-current text-gray-500 w-3 h-3 mr-2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-              </svg>
-              Members only
-            </p>
-            <div className="text-gray-900 font-bold text-xl mb-2">
-             {movie?.title}
+        >
+          <div className="overlay">
+            <div className="overlay-content">
+              <h1>{movie.title}</h1>
+              <p>{movie.overview}</p>
             </div>
-            <p className="text-gray-700 text-base">
-            {movie.overview}
-            </p>
-          </div>
-          <div className="flex items-center">
-          
-         
           </div>
         </div>
       </div>
