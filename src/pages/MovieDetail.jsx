@@ -9,6 +9,7 @@ const MovieDetail = () => {
   const location = useLocation();
   const response = location.state;
   const { id } = useParams();
+  console.log(response)
 
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
@@ -18,6 +19,7 @@ const MovieDetail = () => {
     const { data } = await axios(VIDEO_BASE_URL);
     setYoutube(data);
     setLoading(false);
+ 
   };
 
   useEffect(() => {
@@ -44,23 +46,26 @@ const MovieDetail = () => {
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${youtube?.results[0].key}`}
               className="react-player"
-              style={{}}
               controls
             />
           </div>
         )}
       </div>
-      <div className="flex justify-evenly mt-5 items-center ">
-        <div className="w-72 h-72 mx-left ">
-          <img
-            src={`https://image.tmdb.org/t/p/w1280${response?.poster_path}`}
-          />
-        </div>
-        <div className="w-48 ">
-          <h1>{response?.overview}</h1>
-          <h1></h1>
-          <h1></h1>
-          <h1></h1>
+   
+      <div className="flex justify-center mt-12">
+        <div className="flex flex-col rounded-lg bg-white shadow-lg  ">
+          <img className="h-full w-full rounded-t-lg object-cover " src={`https://image.tmdb.org/t/p/w1280${response?.poster_path}`} alt="" />
+          <div className="flex flex-col justify-start p-6">
+            <h5 className="mb-2 text-xl font-medium">
+              {response?.title}
+            </h5>
+            <p className="mb-4 text-base ">
+            {response?.overview}
+            </p>
+            <p >
+              Popularity: {response?.popularity}
+            </p> <span> <p> Vote: {response?.vote_average}</p></span>
+          </div>
         </div>
       </div>
     </>
