@@ -19,10 +19,7 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
       }).then(() => {
         navigate('/login');
       }))
-      
       setMovieName(" ")
-  
-    ;
   };
 
   return (

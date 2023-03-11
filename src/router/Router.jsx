@@ -11,8 +11,8 @@ import { UserContext } from "../context/AuthContext";
 import PrivateRouter from "./PrivateRouter";
 
 const Router = () => {
-  // const { user, setUser } = useContext(UserContext);
-  // onAuthStateChanged(auth, (currentUser) => setUser(currentUser?.email));
+  const { user, setUser } = useContext(UserContext);
+  onAuthStateChanged(auth, (currentUser) => setUser(currentUser?.email));
   return (
     <BrowserRouter>
       <Navbar />
