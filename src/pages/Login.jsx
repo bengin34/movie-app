@@ -20,7 +20,7 @@ const Login = () => {
         loginData.password
       );
       setUser(user.user.email);
-      navigate("/");
+       navigate("/");
 
       const Toast = Swal.mixin({
         toast: true,

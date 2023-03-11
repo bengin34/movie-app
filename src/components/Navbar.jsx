@@ -1,14 +1,26 @@
 import React,{ useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../auth/firebase-config";
+import Swal from "sweetalert2";
+
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
+  const navigate= useNavigate()
 
   const logout = async () => {
     await signOut(auth);
+    Swal({
+      title: "Logged out successfully!",
+      icon: "success",
+      timer: 2000,
+    }).then(() => {
+      navigate("/")
+    });
+    
+
   };
   const userNameSlice = () => {
     const a = user?.indexOf("@");
@@ -27,14 +39,14 @@ const Navbar = () => {
       </div>
 
       {user ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center capitalize">
           {" "}
-          <span> {userNameSlice()} </span>{" "}
-          <button onClick={logout}>
+          <span > {userNameSlice()} </span>{" "}
+          <button className="ml-4" onClick={logout}>
             {" "}
-            <span>
+            <span className="flex items-center"> Logout
               {" "}
-              <svg
+              <svg className="ml-2"
                 height={20}
                 width={20}
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +67,7 @@ const Navbar = () => {
               cursor-pointer transition-colors duration-300"
           >
             <svg
-              className="fill-current h-5 w-5 mr-2 mt-0.5"
+              className="fill-current h-5 w-5 mr-2 ml-4 mt-0.5"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               version="1.1"

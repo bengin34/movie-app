@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import defaultImg  from "../helper/movie.jpg"
 
 const MovieCard = ({ movie }) => {
 
@@ -13,7 +13,7 @@ const navigate = useNavigate()
       {state:{movie:movie}} )} >
         <div
           
-        > <img src={`https://image.tmdb.org/t/p/w1280${movie?.poster_path}`} alt="" />
+        > <img src={`https://image.tmdb.org/t/p/w1280${movie?.poster_path}` || defaultImg} alt="" />
           <div className="overlay">
             <div className="overlay-content">
               <h1>{movie.title}</h1>
