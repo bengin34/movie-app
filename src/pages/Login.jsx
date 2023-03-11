@@ -63,7 +63,7 @@ const Login = () => {
     <div>
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div className="w-full sm:max-w-md p-5 mx-auto">
-          <h2 className="mb-12 text-center text-5xl font-extrabold">
+          <h2 className="mb-12 text-center  text-5xl font-extrabold">
             Welcome To Movie App.
           </h2>
           <div>

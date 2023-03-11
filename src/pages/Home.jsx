@@ -39,7 +39,7 @@ const Home = () => {
   };
 
   return (
-    <div className="mt-[64px]">
+    <div className="mt-[64px] ">
       <Header
         movieName={movieName}
         setMovieName={setMovieName}
