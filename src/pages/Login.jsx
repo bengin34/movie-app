@@ -6,7 +6,6 @@ import { UserContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const { user, setUser } = useContext(UserContext);
@@ -20,47 +19,47 @@ const Login = () => {
         loginData.password
       );
       setUser(user.user.email);
-       navigate("/");
+      navigate("/");
 
       const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: "top-end",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
       Toast.fire({
-        icon: 'success',
-        title: 'Logged in successfully'
-      })
+        icon: "success",
+        title: "Logged in successfully",
+      });
     } catch (error) {
       console.log(error);
       const Toast = Swal.mixin({
         toast: true,
-        position: 'top-end',
+        position: "top-end",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
       Toast.fire({
-        icon: 'error',
-        title: 'Login is not successfull'
-      })
+        icon: "error",
+        title: "Login is not successfull",
+      });
     }
   };
 
   return (
-    <div>
+    <div className="mt-[64px]">
       <div className="w-full min-h-screen bg-gray-50 flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div className="w-full sm:max-w-md p-5 mx-auto">
           <h2 className="mb-12 text-center  text-5xl font-extrabold">
