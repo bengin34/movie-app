@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MovieCard from "../components/MovieCard";
 import axios from "axios";
+import {UserContext} from "../context/AuthContext"
+import { useContext } from "react";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [movieName, setMovieName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
+  
+  const { user, setUser } = useContext(UserContext);
   const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
   const BASE_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
@@ -17,35 +18,26 @@ const Home = () => {
     try {
       const { data } = await axios(`${BASE_URL}&query=${movieName}`);
       setMovies(data.results);
-      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
-      setError("Something went wrong! Please try again later.");
     }
   };
 
   useEffect(() => {
     getPopularMovies();
-  }, []);
+  }, [user]);
 
   const getPopularMovies = async () => {
     try {
-      setLoading(true);
       const { data } = await axios(
         `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`
       );
       setMovies(data.results);
-      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false);
-      setError("Something went wrong! Please try again later.");
     }
   };
-  const handleAlertClose = () => {
-    setError(null);
-  };
+
   return (
     <div className="mt-[64px]">
       <Header

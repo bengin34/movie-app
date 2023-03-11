@@ -8,6 +8,7 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
   const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
+
    
     auth.currentUser ? ( await getMovies()) : (
       Swal.fire({
@@ -18,12 +19,12 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
       }).then(() => {
         navigate('/login');
       }))
- 
+      
+      setMovieName(" ")
   
     ;
   };
 
-  console.log(movieName);
   return (
     <div className="flex justify-center align-center">
       <form onSubmit={handleSubmit}>
@@ -37,6 +38,7 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
               onChange={(e) => setMovieName((e.target.value).trim())}
               type="text"
               className="w-full border border-indigo-600 rounded-md rounded-r-none px-4"
+              value={movieName}
               placeholder="Search for a movie"
             />
             <button

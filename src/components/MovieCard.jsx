@@ -6,14 +6,13 @@ const MovieCard = ({ movie }) => {
 
 const navigate = useNavigate()
 
-
   return (
     <>
       <div className="m-5 movie-card" onClick={() => navigate(`/${movie.id}`, 
-      {state:{movie:movie}} )} >
+      {state:movie} )} >
         <div
           
-        > <img src={`https://image.tmdb.org/t/p/w1280${movie?.poster_path}` || defaultImg} alt="" />
+        > <img src={  movie?.poster_path ?  `https://image.tmdb.org/t/p/w1280${movie?.poster_path}` :  defaultImg} alt="" />
           <div className="overlay">
             <div className="overlay-content">
               <h1>{movie.title}</h1>
@@ -27,3 +26,5 @@ const navigate = useNavigate()
 };
 
 export default MovieCard;
+
+

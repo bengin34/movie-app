@@ -12,6 +12,7 @@ const Navbar = () => {
 
   const logout = async () => {
     await signOut(auth);
+    
     Swal({
       title: "Logged out successfully!",
       icon: "success",
