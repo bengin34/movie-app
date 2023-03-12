@@ -1,5 +1,5 @@
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import React, { useContext, useState, useEffect } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../auth/firebase-config";
 import { UserContext } from "../context/AuthContext";

@@ -1,6 +1,5 @@
 import {
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
+  createUserWithEmailAndPassword
 } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";

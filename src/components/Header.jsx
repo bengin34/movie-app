@@ -1,25 +1,24 @@
-import React, { useState,useContext } from "react";
+import React from "react";
 import { auth } from "../auth/firebase-config";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const Header = ({ getMovies, movieName, setMovieName }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   
-    auth.currentUser ? ( await getMovies()) : (
-      Swal.fire({
-        icon: 'warning',
-        title: 'You are not logged in!',
-        text: 'Please log in to continue',
-        confirmButtonText: 'Log In',
-      }).then(() => {
-        navigate('/login');
-      }))
-      setMovieName(" ")
+    auth.currentUser
+      ? await getMovies()
+      : Swal.fire({
+          icon: "warning",
+          title: "You are not logged in!",
+          text: "Please log in to continue",
+          confirmButtonText: "Log In",
+        }).then(() => {
+          navigate("/login");
+        });
+    setMovieName(" ");
   };
 
   return (
@@ -32,7 +31,7 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
               Search for a movie
             </label>
             <input
-              onChange={(e) => setMovieName((e.target.value).trim())}
+              onChange={(e) => setMovieName(e.target.value.trim())}
               type="text"
               className="w-full border border-indigo-600 rounded-md rounded-r-none px-4"
               value={movieName}

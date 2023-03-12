@@ -6,8 +6,7 @@ import {auth} from "../auth/firebase-config"
 
 const PrivateRouter = () => {
   const {user} = useContext(UserContext)
-  console.log(user)
-  // console.log(auth.currentUser)
+
   return  (
     auth.currentUser ? (
         <>
