@@ -21,6 +21,7 @@ const Register = () => {
         registerData.password
       );
       setUser(user.user.email);
+      sessionStorage.setItem("user", user.user.email)
       navigate("/")
 
       const Toast = Swal.mixin({

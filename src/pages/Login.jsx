@@ -19,6 +19,7 @@ const Login = () => {
         loginData.password
       );
       setUser(user.user.email);
+      sessionStorage.setItem("user", user.user.email)
       navigate("/");
 
       const Toast = Swal.mixin({

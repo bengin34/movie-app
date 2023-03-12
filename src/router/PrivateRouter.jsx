@@ -5,10 +5,10 @@ import {auth} from "../auth/firebase-config"
 
 
 const PrivateRouter = () => {
-  const {user} = useContext(UserContext)
+  const user = sessionStorage.getItem("user")
 
   return  (
-    auth.currentUser ? (
+    user ? (
         <>
         <Outlet />
         </>
