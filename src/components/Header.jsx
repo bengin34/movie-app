@@ -8,6 +8,11 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  if (!movieName.trim()) {
+    return;
+  }
+
+
     auth.currentUser
       ? await getMovies()
       : Swal.fire({
@@ -31,7 +36,7 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
               Search for a movie
             </label>
             <input
-              onChange={(e) => setMovieName(e.target.value.trim())}
+              onChange={(e) => setMovieName(e.target.value)}
               type="text"
               className="w-full border border-indigo-600 rounded-md rounded-r-none px-4"
               value={movieName}
