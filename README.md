@@ -1,5 +1,3 @@
-[Movie App](https://movie-app-nu-flame.vercel.app/)| React, React Router,Tailwind, Firebase, Rest API|
-
 ## Project title
 # Movie App
 
