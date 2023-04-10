@@ -34,7 +34,7 @@ const Navbar = () => {
       fixed top-0 left-0 right-0 z-10"
     >
       <div className="flex items-center">
-        <Link to="/" className="cursor-pointer">
+        <Link data-test="movieHeader"  to="/" className="cursor-pointer">
           <h3 className="text-2xl font-medium text-blue-500">MOVİE - APP</h3>
         </Link>
       </div>
