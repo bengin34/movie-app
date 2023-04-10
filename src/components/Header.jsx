@@ -8,11 +8,9 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  if (!movieName.trim()) {
-    return;
-  }
-
-
+    if (!movieName.trim()) {
+      return;
+    }
     auth.currentUser
       ? await getMovies()
       : Swal.fire({
@@ -25,7 +23,6 @@ const Header = ({ getMovies, movieName, setMovieName }) => {
         });
     setMovieName(" ");
   };
-
   return (
     <div className="flex justify-center align-center">
       <form onSubmit={handleSubmit}>
